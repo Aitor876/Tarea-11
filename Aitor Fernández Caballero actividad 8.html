@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ejercicios JS</title>
+</head>
+<body>
+    <h2>Ejercicio Suma Números Pares del 1 al 100</h2>
+    <button onclick="principal()">Calcular suma de pares</button>
+
+    <h2>Ejercicio Tabla de Multiplicar</h2>
+    <input type="number" id="multiplicacion1" placeholder="Número" />
+    <button onclick="multi1()">Mostrar tabla</button>
+
+    <h2>Ejercicio Contar Vocales</h2>
+    <input type="text" id="frase1" placeholder="Escribe una frase" />
+    <button onclick="vocal()">Contar vocales</button>
+    <input type="text" id="vocales" placeholder="Cantidad de vocales" readonly />
+
+    <h2>Ejercicio Fibonacci</h2>
+    <button onclick="fibol()">Mostrar Fibonacci</button>
+
+    <script>
+        function principal(){
+            let suma = 0;
+            for(let i = 1; i <= 100; i++){
+                if(i % 2 == 0){
+                    suma += 1;
+                }
+            }
+            console.log("Suma nº pares del 1 al 100:", suma);
+            alert("Cantidad de números pares del 1 al 100: " + suma);
+        }
+
+        function multi1(){
+            let multi = parseInt(document.getElementById("multiplicacion1").value);
+            if(isNaN(multi)){
+                alert("Introduce un número válido");
+                return;
+            }
+            let resultados = "";
+            for(let i = 1; i <= 10; i++){
+                let resultado = multi * i;
+                resultados += `${multi} x ${i} = ${resultado}\n`;
+                console.log(`${multi} x ${i} = ${resultado}`);
+            }
+            alert(resultados);
+        }
+
+        function vocal(){
+            let frase = document.getElementById("frase1").value;
+            let contadorvocales = 0;
+            for(let i = 0; i < frase.length; i++){
+                let letra = frase[i].toLowerCase();
+                if("aeiou".includes(letra)){
+                    contadorvocales++;
+                }
+            }
+            console.log("La cantidad de vocales es " + contadorvocales);
+            document.getElementById("vocales").value = contadorvocales;
+        }
+
+        function fibol(){
+            let num1 = 0;
+            let num2 = 1;
+            let resultados = num1 + "\n" + num2 + "\n";
+            console.log("Los primeros 20 números de la serie de Fibonacci son:");
+            console.log(num1);
+            console.log(num2);
+            for(let i = 3; i <= 20; i++){
+                let num3 = num1 + num2;
+                resultados += num3 + "\n";
+                console.log(num3);
+                num1 = num2;
+                num2 = num3;
+            }
+            alert("Los primeros 20 números de Fibonacci:\n" + resultados);
+        }
+    </script>
+</body>
+</html>
